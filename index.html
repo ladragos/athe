@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Athe sağlık ve form uygulamasının gizlilik politikası — hangi veriler toplanıyor, nerede saklanıyor, nasıl silinir.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Athe Gizlilik Politikası</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground: #FAF6EE;
+    --surface: #FFFFFF;
+    --ink: #1E2420;
+    --muted: #6B7169;
+    --accent: #3F6B4E;
+    --accent-soft: #EAF0EA;
+    --rule: #E2D9C6;
+    --shadow: 0 1px 2px rgba(30, 36, 32, .05), 0 8px 24px -16px rgba(30, 36, 32, .25);
+
+    --display: "Archivo", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14170F;
+      --surface: #1C2018;
+      --ink: #EDE7DA;
+      --muted: #9AA096;
+      --accent: #8FBE9B;
+      --accent-soft: #232A22;
+      --rule: #2E342B;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #14170F;
+    --surface: #1C2018;
+    --ink: #EDE7DA;
+    --muted: #9AA096;
+    --accent: #8FBE9B;
+    --accent-soft: #232A22;
+    --rule: #2E342B;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding-inline: 24px;
+    padding-block: 0 72px;
+  }
+
+  /* ---------- header ---------- */
+
+  header.mast {
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 44px;
+    padding-block: 40px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .mast-id { display: flex; flex-direction: column; gap: 6px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(30px, 6vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -.022em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .stamp {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .stamp b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- language switch ---------- */
+
+  .langbar {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 3px;
+    background: var(--surface);
+  }
+
+  .langbar button {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: .06em;
+    padding: 7px 15px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .langbar button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--ground);
+  }
+
+  .langbar button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ---------- intro ---------- */
+
+  .lede {
+    font-size: 19.5px;
+    line-height: 1.6;
+    margin: 0 0 40px;
+    color: var(--ink);
+  }
+
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 0 0 44px;
+    font-size: 16px;
+  }
+  .callout p { margin: 0; }
+  .callout p + p { margin-top: 8px; }
+
+  /* ---------- sections ---------- */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-block: 30px 0;
+    border-top: 1px solid var(--rule);
+  }
+  section:first-of-type { border-top: 0; padding-top: 0; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -.012em;
+    line-height: 1.25;
+    margin: 0;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    text-wrap: balance;
+  }
+
+  h2 .num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    flex: none;
+    padding-top: 1px;
+  }
+
+  section p, section ul { margin: 0; }
+
+  ul { padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+  li::marker { color: var(--accent); }
+
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  .fine { font-size: 15px; color: var(--muted); }
+
+  /* ---------- data table ---------- */
+
+  .tablewrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 15px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  thead th {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--ground);
+  }
+
+  tbody tr:last-child td { border-bottom: 0; }
+
+  td.where { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* ---------- never-collected list ---------- */
+
+  .never {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+  }
+  .never li {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    border: 1px dashed var(--rule);
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 14.5px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .lede { font-size: 17.5px; }
+    h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="mast-id">
+      <span class="eyebrow" data-tr="Athe · Sağlık ve Form Uygulaması" data-en="Athe · Health &amp; Fitness App">Athe · Sağlık ve Form Uygulaması</span>
+      <h1 data-tr="Gizlilik Politikası" data-en="Privacy Policy">Gizlilik Politikası</h1>
+      <span class="stamp">
+        <span data-tr="Yürürlük tarihi:" data-en="Effective date:">Yürürlük tarihi:</span>
+        <b data-tr="14 Eylül 2026" data-en="14 September 2026">14 Eylül 2026</b>
+        · <span data-tr="Sürüm 1.0" data-en="Version 1.0">Sürüm 1.0</span>
+      </span>
+    </div>
+    <div class="langbar" role="group" aria-label="Dil / Language">
+      <button id="btn-tr" type="button" aria-pressed="true">TÜRKÇE</button>
+      <button id="btn-en" type="button" aria-pressed="false">ENGLISH</button>
+    </div>
+  </header>
+
+  <!-- ============================ TÜRKÇE ============================ -->
+  <main id="doc-tr" lang="tr">
+
+    <p class="lede">Athe; kilonuzu, yediklerinizi, adımlarınızı ve dilerseniz adet döngünüzü takip eden bir sağlık uygulamasıdır. Bunlar mahrem bilgilerdir. Bu sayfa, hangi verinin toplandığını, nerede durduğunu ve onu istediğiniz an nasıl sildirebileceğinizi açıkça anlatır.</p>
+
+    <div class="callout">
+      <p><b>Kısa özet:</b> Verileriniz yalnızca uygulamanın size hesap yapabilmesi için toplanır. Hiçbir veriniz satılmaz, reklam için kullanılmaz, reklam ağlarıyla paylaşılmaz. Konumunuz hiç alınmaz. Yemek fotoğraflarınız hiçbir yerde saklanmaz.</p>
+      <p>Hesabınızı uygulamadan sildiğinizde bütün verileriniz sunucudan da silinir.</p>
+    </div>
+
+    <section>
+      <h2><span class="num">01</span><span>Veri sorumlusu ve iletişim</span></h2>
+      <p>Athe uygulamasını bir bireysel geliştirici olarak <b>Umut Can Köse</b> yayımlamaktadır. KVKK kapsamında veri sorumlusu odur.</p>
+      <p>Gizlilikle ilgili her türlü soru, talep ve hak kullanımı için: <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></p>
+      <p class="fine">Taleplere en geç 30 gün içinde yanıt verilir.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span><span>Hangi verileri işliyoruz</span></h2>
+      <p>Aşağıdaki tablo, uygulamanın topladığı her veri kalemini ve nerede durduğunu gösterir. Bu listenin dışında bir veri toplanmaz.</p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Veri</th><th>Ne için</th><th>Nerede duruyor</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>E-posta adresi</td><td>Hesap açma, giriş, e-posta doğrulama, şifre sıfırlama</td><td class="where">Firebase Auth</td></tr>
+            <tr><td>Ad ve soyad</td><td>Uygulama içinde size hitap etmek</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Yaş, cinsiyet, boy, kilo, hedef kilo</td><td>Bazal metabolizma, günlük kalori ve makro hesabı, VKİ</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Hareket düzeyi, haftalık antrenman günü, ekipman durumu</td><td>Antrenman programı üretimi</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Beslenme tercihleri (vejetaryen, glutensiz, laktozsuz vb.)</td><td>Yemek menüsü üretimi</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Yemek kayıtları: yiyecek adı, gram, kalori, protein, karbonhidrat, yağ, öğün</td><td>Günlük kalori ve makro takibi</td><td class="where">Firestore · food</td></tr>
+            <tr><td>Hareket kayıtları: adım, mesafe, süre, yakılan kalori</td><td>Günlük hareket takibi</td><td class="where">Firestore · activity</td></tr>
+            <tr><td>Günlük özet: adım, su, kilo, tamamlanan antrenman</td><td>Grafikler ve geçmiş</td><td class="where">Firestore · days</td></tr>
+            <tr><td>Adet döngüsü kayıtları: tarih, kanama yoğunluğu, belirtiler, ruh hâli, enerji, kişisel not<span class="tag">İsteğe bağlı</span></td><td>Döngü tahmini ve takibi. Yalnızca siz girerseniz oluşur, hiçbir zaman zorunlu değildir.</td><td class="where">Firestore · periods, cycleLogs</td></tr>
+            <tr><td>Antrenman ve menü planları</td><td>Üretilen programın saklanması</td><td class="where">Firestore · plans</td></tr>
+            <tr><td>Günlük yapay zekâ tarama sayısı</td><td>Ücretsiz kullanım kotasının takibi</td><td class="where">Firestore · usage</td></tr>
+            <tr><td>Yemek fotoğrafı</td><td>Yapay zekâ ile besin değeri tahmini</td><td class="where">Saklanmıyor</td></tr>
+            <tr><td>Çökme kayıtları ve temel kullanım olayları (ekran açılışı, özellik kullanımı)</td><td>Hata ayıklama ve uygulamanın iyileştirilmesi</td><td class="where">Crashlytics, Analytics</td></tr>
+            <tr><td>Uygulama tercihleri: dil, hatırlatıcı saatleri, günlük adım sayacı</td><td>Ayarlarınızın hatırlanması</td><td class="where">Yalnızca telefonunuzda</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Firestore ve Firebase Auth, Google tarafından işletilen bulut hizmetleridir.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span><span>Toplanmayanlar</span></h2>
+      <p>Aşağıdakiler hiçbir koşulda toplanmaz:</p>
+      <ul class="never">
+        <li>Konum / GPS</li>
+        <li>Rehber ve kişiler</li>
+        <li>Fotoğraf galerisinin tamamı</li>
+        <li>Mikrofon</li>
+        <li>SMS ve arama kaydı</li>
+        <li>Reklam kimliği</li>
+        <li>Yüklü uygulama listesi</li>
+        <li>Ödeme bilgisi</li>
+      </ul>
+      <p class="fine">Yemek fotoğrafı çekerken yalnızca o an seçtiğiniz tek kareye erişilir; galerinizin geri kalanı okunmaz.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span><span>Sağlık verileri ve açık rızanız</span></h2>
+      <p>Kilo, boy, yaş, cinsiyet, beslenme kayıtları ve özellikle adet döngüsü bilgileri, KVKK m.6 anlamında <b>özel nitelikli kişisel veri</b>dir. Bunların işlenmesi yalnızca kayıt sırasında verdiğiniz <b>açık rızaya</b> dayanır.</p>
+      <p>Adet döngüsü takibi tamamen isteğe bağlıdır. Hiç kullanmazsanız bu alanda tek bir kayıt bile oluşmaz. Girdiğiniz notlar ve belirtiler yapay zekâya gönderilmez, reklam veya profilleme amacıyla kullanılmaz ve üçüncü kişilerle paylaşılmaz.</p>
+      <p>Rızanızı istediğiniz an geri çekebilirsiniz; geri çekme yolu, hesabınızı silmek veya bize yazmaktır.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span><span>Yemek fotoğrafı ve yapay zekâ</span></h2>
+      <p>Bir yemeğin fotoğrafını çektiğinizde, kare doğrudan Google'ın <b>Gemini</b> modeline analiz için gönderilir ve sonuç size tahmini kalori ve makro değerleri olarak döner.</p>
+      <ul>
+        <li>Fotoğraf hiçbir sunucuda ve hiçbir veri tabanında <b>saklanmaz</b>; analiz bittiğinde kaybolur.</li>
+        <li>Yalnızca analizin metin sonucu (yiyecek adı, gram, kalori, makrolar) kayıt olarak kalır.</li>
+        <li>Fotoğraflarınız model eğitimi için kullanılmaz.</li>
+        <li>Yapay zekâ tahminleri <b>tahmindir</b>; tıbbi doğruluk iddiası taşımaz.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span><span>Kimlerle paylaşıyoruz</span></h2>
+      <p>Verileriniz satılmaz ve pazarlama amacıyla kimseye aktarılmaz. Yalnızca uygulamanın çalışması için gereken altyapı sağlayıcısı kullanılır:</p>
+      <ul>
+        <li><b>Google LLC / Firebase</b> — kimlik doğrulama, veri tabanı, çökme raporları, kullanım ölçümü ve Gemini yapay zekâ hizmeti.</li>
+      </ul>
+      <p>Bu hizmetler sunucularını yurt dışında barındırır; dolayısıyla verileriniz <b>yurt dışına aktarılır</b>. Kayıt sırasında verdiğiniz açık rıza bu aktarımı da kapsar. Google'ın gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+      <p class="fine">Bunun dışında veriler yalnızca yasal bir zorunluluk (mahkeme kararı, resmî talep) hâlinde paylaşılır.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span><span>Ne kadar saklıyoruz</span></h2>
+      <p>Verileriniz hesabınız açık kaldığı sürece saklanır. Hesabınızı sildiğinizde profil, yemek, hareket, günlük özet, plan ve döngü kayıtlarınızın tamamı sunucudan silinir.</p>
+      <p class="fine">Çökme ve kullanım istatistikleri kimliğinizle ilişkilendirilemeyecek biçimde toplanır ve Firebase'in kendi saklama süresi (en fazla 14 ay) sonunda otomatik olarak düşer.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span><span>Haklarınız</span></h2>
+      <p>KVKK m.11 ve GDPR kapsamında şu haklara sahipsiniz:</p>
+      <ul>
+        <li>Verilerinizin işlenip işlenmediğini öğrenme ve bir kopyasını isteme</li>
+        <li>Yanlış veya eksik verinin düzeltilmesini isteme</li>
+        <li>Silinmesini veya yok edilmesini isteme</li>
+        <li>Verilerinizi okunabilir bir formatta taşıma</li>
+        <li>Açık rızanızı geri çekme</li>
+        <li>İşlemeye itiraz etme ve zarara uğramanız hâlinde tazminat talep etme</li>
+      </ul>
+      <p>Uygulamada <b>Profil › Verilerimi indir</b> adımı, tüm kayıtlarınızı JSON dosyası olarak dışa aktarır. Diğer talepleriniz için e-posta yazmanız yeterlidir.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span><span>Verilerinizi nasıl silersiniz</span></h2>
+      <p>Uygulamada <b>Profil › Hesabı sil</b> adımını izleyin. Güvenlik için şifrenizi yeniden girmeniz istenir. Onayladığınızda:</p>
+      <ul>
+        <li>Firestore'daki profiliniz, yemek, hareket, günlük özet, plan ve döngü kayıtlarınız silinir,</li>
+        <li>Firebase Auth hesabınız silinir,</li>
+        <li>Telefonunuzda tutulan tercihler ve adım verisi temizlenir.</li>
+      </ul>
+      <p>Bu işlem geri alınamaz. Uygulamaya erişemiyorsanız, hesabınızın e-posta adresinden bize yazarak da silme talebinde bulunabilirsiniz.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span><span>Çocuklar</span></h2>
+      <p>Athe 13 yaşından küçükler için tasarlanmamıştır ve onlardan bilerek veri toplamaz. 18 yaşından küçük kullanıcıların uygulamayı ebeveyn bilgisi ve onayıyla kullanması gerekir.</p>
+      <p>18 yaş altı olarak kaydolan kullanıcılara <b>kalori açığı önerilmez</b>; uygulama bu yaş grubunda yalnızca koruyucu, büyümeyi destekleyen bir hedef gösterir.</p>
+      <p class="fine">13 yaşından küçük bir çocuğa ait veri toplandığını fark edersek kaydı derhal sileriz.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span><span>Güvenlik</span></h2>
+      <ul>
+        <li>Tüm veri aktarımı TLS ile şifrelenir.</li>
+        <li>Veri tabanı kuralları, her kullanıcının <b>yalnızca kendi</b> kayıtlarını okuyup yazabilmesine izin verir; başka bir kullanıcının verisine erişim sunucu tarafında engellidir.</li>
+        <li>Firebase App Check, sunucuya yalnızca gerçek Athe uygulamasından gelen isteklerin ulaşmasını sağlar.</li>
+        <li>Hesap açarken e-posta doğrulaması, hesap silerken şifre ile yeniden kimlik doğrulaması zorunludur.</li>
+        <li>Şifrenizi biz görmeyiz; kimlik doğrulama tamamen Firebase Auth tarafından yürütülür.</li>
+      </ul>
+      <p class="fine">Hiçbir sistem %100 güvenli değildir; bir veri ihlali yaşanırsa etkilenen kullanıcılara ve KVKK kapsamında Kişisel Verileri Koruma Kurumu'na bildirimde bulunulur.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span><span>İzinler</span></h2>
+      <ul>
+        <li><b>Fiziksel aktivite</b> — telefonun adım sayacını okumak için. Adım verisi telefonunuzda sayılır, sunucuya yalnızca günlük toplam olarak yazılır.</li>
+        <li><b>Bildirimler</b> — su ve antrenman hatırlatıcıları için. Hatırlatıcı saatleri yalnızca telefonunuzda tutulur.</li>
+        <li><b>Kamera / fotoğraf seçimi</b> — yemek fotoğrafı taraması için, yalnızca siz başlattığınızda.</li>
+      </ul>
+      <p>Bu izinlerin hepsi isteğe bağlıdır; reddederseniz uygulamanın geri kalanı normal çalışır.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">13</span><span>Sağlık uyarısı</span></h2>
+      <p>Athe bir tıbbi cihaz değildir. Sunduğu kalori hedefleri, antrenman programları, menüler ve döngü tahminleri genel bilgilendirme amaçlıdır; teşhis, tedavi veya tıbbi tavsiye yerine geçmez. Özellikle gebelik, kronik hastalık, yeme bozukluğu öyküsü veya ilaç kullanımı söz konusuysa bir hekime ya da diyetisyene danışın.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">14</span><span>Bu metinde değişiklik</span></h2>
+      <p>Politika değişirse bu sayfa güncellenir ve yukarıdaki yürürlük tarihi ile sürüm numarası yenilenir. Kapsamlı bir değişiklikte uygulama içinde bilgilendirilir ve gerekirse rızanız yeniden alınır.</p>
+    </section>
+
+    <footer>
+      <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
+      <span>Son güncelleme: 14 Eylül 2026</span>
+    </footer>
+  </main>
+
+  <!-- ============================ ENGLISH ============================ -->
+  <main id="doc-en" lang="en" hidden>
+
+    <p class="lede">Athe is a health app that tracks your weight, meals, steps and — if you choose to — your menstrual cycle. That is private information. This page sets out plainly what is collected, where it is kept, and how you can have it deleted at any time.</p>
+
+    <div class="callout">
+      <p><b>In short:</b> Your data is collected only so the app can do its calculations for you. Nothing is sold, used for advertising, or shared with ad networks. Your location is never collected. Your meal photos are never stored anywhere.</p>
+      <p>When you delete your account in the app, all of your data is deleted from the server too.</p>
+    </div>
+
+    <section>
+      <h2><span class="num">01</span><span>Who is responsible, and how to reach us</span></h2>
+      <p>Athe is published by <b>Umut Can Köse</b>, an individual developer, who is the data controller under Turkish data protection law (KVKK) and the GDPR.</p>
+      <p>For any privacy question, request, or to exercise your rights: <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></p>
+      <p class="fine">Requests are answered within 30 days at the latest.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span><span>What we collect</span></h2>
+      <p>The table below lists every item of data the app collects and where it is kept. Nothing outside this list is collected.</p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Data</th><th>Why</th><th>Where it lives</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Email address</td><td>Sign-up, sign-in, email verification, password reset</td><td class="where">Firebase Auth</td></tr>
+            <tr><td>First and last name</td><td>Addressing you inside the app</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Age, sex, height, weight, goal weight</td><td>Basal metabolic rate, daily calorie and macro targets, BMI</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Activity level, weekly training days, available equipment</td><td>Generating your workout plan</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Dietary preferences (vegetarian, gluten-free, lactose-free, etc.)</td><td>Generating your meal plan</td><td class="where">Firestore · users</td></tr>
+            <tr><td>Meal entries: food name, grams, calories, protein, carbs, fat, meal slot</td><td>Daily calorie and macro tracking</td><td class="where">Firestore · food</td></tr>
+            <tr><td>Activity entries: steps, distance, duration, calories burned</td><td>Daily movement tracking</td><td class="where">Firestore · activity</td></tr>
+            <tr><td>Daily summary: steps, water, weight, completed workouts</td><td>Charts and history</td><td class="where">Firestore · days</td></tr>
+            <tr><td>Cycle entries: date, flow, symptoms, mood, energy, personal note<span class="tag">Optional</span></td><td>Cycle prediction and tracking. Created only if you enter it; never required.</td><td class="where">Firestore · periods, cycleLogs</td></tr>
+            <tr><td>Workout and meal plans</td><td>Storing the program generated for you</td><td class="where">Firestore · plans</td></tr>
+            <tr><td>Daily AI scan count</td><td>Tracking the free usage quota</td><td class="where">Firestore · usage</td></tr>
+            <tr><td>Meal photo</td><td>AI estimate of nutritional values</td><td class="where">Not stored</td></tr>
+            <tr><td>Crash reports and basic usage events (screen opened, feature used)</td><td>Debugging and improving the app</td><td class="where">Crashlytics, Analytics</td></tr>
+            <tr><td>App preferences: language, reminder times, today's step counter</td><td>Remembering your settings</td><td class="where">On your phone only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Firestore and Firebase Auth are cloud services operated by Google.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span><span>What we never collect</span></h2>
+      <p>None of the following is collected under any circumstances:</p>
+      <ul class="never">
+        <li>Location / GPS</li>
+        <li>Contacts</li>
+        <li>Your photo library</li>
+        <li>Microphone</li>
+        <li>SMS and call logs</li>
+        <li>Advertising ID</li>
+        <li>List of installed apps</li>
+        <li>Payment details</li>
+      </ul>
+      <p class="fine">When you scan a meal, only the single frame you select in that moment is accessed; the rest of your gallery is never read.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span><span>Health data and your explicit consent</span></h2>
+      <p>Weight, height, age, sex, nutrition entries and especially cycle data are <b>special category personal data</b> under KVKK Art. 6 and GDPR Art. 9. They are processed solely on the basis of the <b>explicit consent</b> you give at sign-up.</p>
+      <p>Cycle tracking is entirely optional. If you never use it, not a single record is created. The notes and symptoms you enter are not sent to the AI, are not used for advertising or profiling, and are not shared with third parties.</p>
+      <p>You may withdraw your consent at any time by deleting your account or by writing to us.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span><span>Meal photos and AI</span></h2>
+      <p>When you photograph a meal, the frame is sent directly to Google's <b>Gemini</b> model for analysis and comes back to you as estimated calories and macros.</p>
+      <ul>
+        <li>The photo is <b>not stored</b> on any server or in any database; it is gone once the analysis finishes.</li>
+        <li>Only the text result (food name, grams, calories, macros) is kept as an entry.</li>
+        <li>Your photos are not used to train models.</li>
+        <li>AI results are <b>estimates</b> and make no claim to medical accuracy.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span><span>Who we share with</span></h2>
+      <p>Your data is not sold and is never passed to anyone for marketing. Only the infrastructure provider the app needs to run is used:</p>
+      <ul>
+        <li><b>Google LLC / Firebase</b> — authentication, database, crash reporting, usage measurement, and the Gemini AI service.</li>
+      </ul>
+      <p>These services host their servers outside Türkiye, so your data is <b>transferred abroad</b>. The explicit consent you give at sign-up covers that transfer. Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+      <p class="fine">Beyond this, data is disclosed only where legally required (a court order or official request).</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span><span>How long we keep it</span></h2>
+      <p>Your data is kept for as long as your account exists. When you delete your account, your profile, meal, activity, daily summary, plan and cycle records are all removed from the server.</p>
+      <p class="fine">Crash and usage statistics are collected in a form that cannot be tied back to you and expire automatically at the end of Firebase's own retention window (14 months at most).</p>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span><span>Your rights</span></h2>
+      <p>Under KVKK Art. 11 and the GDPR you have the right to:</p>
+      <ul>
+        <li>Learn whether your data is processed and request a copy of it</li>
+        <li>Have inaccurate or incomplete data corrected</li>
+        <li>Have your data erased</li>
+        <li>Port your data in a readable format</li>
+        <li>Withdraw your explicit consent</li>
+        <li>Object to processing, and claim compensation for any damage suffered</li>
+      </ul>
+      <p>In the app, <b>Profile › Export my data</b> exports all of your records as a JSON file. For anything else, an email is enough.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span><span>How to delete your data</span></h2>
+      <p>In the app, go to <b>Profile › Delete account</b>. You will be asked to re-enter your password for security. Once you confirm:</p>
+      <ul>
+        <li>your profile, meal, activity, daily summary, plan and cycle records in Firestore are deleted,</li>
+        <li>your Firebase Auth account is deleted,</li>
+        <li>the preferences and step data held on your phone are cleared.</li>
+      </ul>
+      <p>This cannot be undone. If you can no longer reach the app, you may also request deletion by writing to us from your account's email address.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span><span>Children</span></h2>
+      <p>Athe is not designed for children under 13 and does not knowingly collect data from them. Users under 18 should use the app with a parent's knowledge and consent.</p>
+      <p>Users who register as under 18 are <b>never given a calorie deficit</b>; for that age group the app only shows a protective target that supports growth.</p>
+      <p class="fine">If we learn that we hold data belonging to a child under 13, we delete the record immediately.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span><span>Security</span></h2>
+      <ul>
+        <li>All data in transit is encrypted with TLS.</li>
+        <li>Database rules let each user read and write <b>only their own</b> records; access to another user's data is blocked server-side.</li>
+        <li>Firebase App Check ensures only requests from the genuine Athe app reach the server.</li>
+        <li>Email verification is required at sign-up, and password re-authentication is required before account deletion.</li>
+        <li>We never see your password; authentication is handled entirely by Firebase Auth.</li>
+      </ul>
+      <p class="fine">No system is completely secure. In the event of a breach, affected users and, under KVKK, the Turkish Personal Data Protection Authority will be notified.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span><span>Permissions</span></h2>
+      <ul>
+        <li><b>Physical activity</b> — to read the phone's step counter. Steps are counted on your phone and only the daily total is written to the server.</li>
+        <li><b>Notifications</b> — for water and workout reminders. Reminder times are stored on your phone only.</li>
+        <li><b>Camera / photo selection</b> — for meal scanning, only when you start it.</li>
+      </ul>
+      <p>All of these are optional; if you decline them, the rest of the app works normally.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">13</span><span>Health disclaimer</span></h2>
+      <p>Athe is not a medical device. Its calorie targets, workout programs, meal plans and cycle predictions are for general information only and are not a substitute for diagnosis, treatment or medical advice. Consult a doctor or dietitian, particularly in case of pregnancy, chronic illness, a history of disordered eating, or ongoing medication.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">14</span><span>Changes to this policy</span></h2>
+      <p>If the policy changes, this page is updated and the effective date and version number above are revised. For a substantial change you will be informed inside the app and, where necessary, asked for your consent again.</p>
+    </section>
+
+    <footer>
+      <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
+      <span>Last updated: 14 September 2026</span>
+    </footer>
+  </main>
+
+</div>
+
+<script>
+  (function () {
+    var btnTr = document.getElementById('btn-tr');
+    var btnEn = document.getElementById('btn-en');
+    var docTr = document.getElementById('doc-tr');
+    var docEn = document.getElementById('doc-en');
+    var swaps = document.querySelectorAll('[data-tr]');
+
+    function setLang(lang) {
+      var tr = lang === 'tr';
+      docTr.hidden = !tr;
+      docEn.hidden = tr;
+      btnTr.setAttribute('aria-pressed', String(tr));
+      btnEn.setAttribute('aria-pressed', String(!tr));
+      document.documentElement.setAttribute('lang', lang);
+      for (var i = 0; i < swaps.length; i++) {
+        swaps[i].textContent = swaps[i].getAttribute(tr ? 'data-tr' : 'data-en');
+      }
+      try { localStorage.setItem('athe_privacy_lang', lang); } catch (e) {}
+    }
+
+    btnTr.addEventListener('click', function () { setLang('tr'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('athe_privacy_lang'); } catch (e) {}
+    if (saved === 'en') setLang('en');
+  })();
+</script>
+
+</body>
+</html>
