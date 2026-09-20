@@ -350,6 +350,7 @@
             <tr><td>Hareket düzeyi, haftalık antrenman günü, ekipman durumu</td><td>Antrenman programı üretimi</td><td class="where">Firestore · users</td></tr>
             <tr><td>Beslenme tercihleri (vejetaryen, glutensiz, laktozsuz vb.)</td><td>Yemek menüsü üretimi</td><td class="where">Firestore · users</td></tr>
             <tr><td>Yemek kayıtları: yiyecek adı, gram, kalori, protein, karbonhidrat, yağ, öğün</td><td>Günlük kalori ve makro takibi</td><td class="where">Firestore · food</td></tr>
+            <tr><td>Kişisel yemek hafızası: tarama sırasında yazdığınız yemek adları, onayladığınız 100 g başına besin değerleri, kullanım sayısı ve son porsiyon<span class="tag">İsteğe bağlı</span></td><td>Aynı yemeği tekrar yediğinizde aynı besin değerinin kullanılması. Yalnızca siz yemek adı yazarsanız oluşur.</td><td class="where">Firestore · foodMemory</td></tr>
             <tr><td>Hareket kayıtları: adım, mesafe, süre, yakılan kalori</td><td>Günlük hareket takibi</td><td class="where">Firestore · activity</td></tr>
             <tr><td>Günlük özet: adım, su, kilo, tamamlanan antrenman</td><td>Grafikler ve geçmiş</td><td class="where">Firestore · days</td></tr>
             <tr><td>Adet döngüsü kayıtları: tarih, kanama yoğunluğu, belirtiler, ruh hâli, enerji, kişisel not<span class="tag">İsteğe bağlı</span></td><td>Döngü tahmini ve takibi. Yalnızca siz girerseniz oluşur, hiçbir zaman zorunlu değildir.</td><td class="where">Firestore · periods, cycleLogs</td></tr>
@@ -407,6 +408,8 @@
       <ul>
         <li>Fotoğraf hiçbir sunucuda ve hiçbir veri tabanında <b>saklanmaz</b>; analiz bittiğinde kaybolur.</li>
         <li>Yalnızca analizin metin sonucu (yiyecek adı, gram, kalori, makrolar) kayıt olarak kalır.</li>
+        <li>Taramadan önce yemeğin adını yazarsanız, bu ad ve o yemek için daha önce onayladığınız besin değerleri fotoğrafla birlikte Gemini'ye metin olarak gönderilir; amaç yalnızca tahminin doğruluğunu artırmaktır.</li>
+        <li>Onayladığınız yemekler hesabınıza bağlı <b>kişisel yemek hafızanızda</b> saklanır. Bu hafızaya yalnızca siz erişirsiniz, kimseyle paylaşılmaz ve hesabınızı sildiğinizde kalıcı olarak silinir.</li>
         <li>Fotoğraflarınız model eğitimi için kullanılmaz.</li>
         <li>Yapay zekâ tahminleri <b>tahmindir</b>; tıbbi doğruluk iddiası taşımaz.</li>
       </ul>
@@ -496,7 +499,7 @@
 
     <footer>
       <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
-      <span>Son güncelleme: 16 Eylül 2026</span>
+      <span>Son güncelleme: 20 Eylül 2026</span>
     </footer>
   </main>
 
@@ -532,6 +535,7 @@
             <tr><td>Activity level, weekly training days, available equipment</td><td>Generating your workout plan</td><td class="where">Firestore · users</td></tr>
             <tr><td>Dietary preferences (vegetarian, gluten-free, lactose-free, etc.)</td><td>Generating your meal plan</td><td class="where">Firestore · users</td></tr>
             <tr><td>Meal entries: food name, grams, calories, protein, carbs, fat, meal slot</td><td>Daily calorie and macro tracking</td><td class="where">Firestore · food</td></tr>
+            <tr><td>Personal food memory: food names you type during a scan, the per-100 g nutrition values you confirm, use count and last portion<span class="tag">Optional</span></td><td>Using the same nutrition values when you eat the same food again. Created only if you type a food name.</td><td class="where">Firestore · foodMemory</td></tr>
             <tr><td>Activity entries: steps, distance, duration, calories burned</td><td>Daily movement tracking</td><td class="where">Firestore · activity</td></tr>
             <tr><td>Daily summary: steps, water, weight, completed workouts</td><td>Charts and history</td><td class="where">Firestore · days</td></tr>
             <tr><td>Cycle entries: date, flow, symptoms, mood, energy, personal note<span class="tag">Optional</span></td><td>Cycle prediction and tracking. Created only if you enter it; never required.</td><td class="where">Firestore · periods, cycleLogs</td></tr>
@@ -589,6 +593,8 @@
       <ul>
         <li>The photo is <b>not stored</b> on any server or in any database; it is gone once the analysis finishes.</li>
         <li>Only the text result (food name, grams, calories, macros) is kept as an entry.</li>
+        <li>If you type the name of the food before scanning, that name and the nutrition values you previously confirmed for it are sent to Gemini as text together with the photo; the only purpose is a more accurate estimate.</li>
+        <li>Foods you confirm are stored in a <b>personal food memory</b> tied to your account. Only you can access it, it is not shared with anyone, and it is permanently deleted when you delete your account.</li>
         <li>Your photos are not used to train models.</li>
         <li>AI results are <b>estimates</b> and make no claim to medical accuracy.</li>
       </ul>
@@ -677,7 +683,7 @@
 
     <footer>
       <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
-      <span>Last updated: 16 September 2026</span>
+      <span>Last updated: 20 September 2026</span>
     </footer>
   </main>
 
