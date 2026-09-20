@@ -324,7 +324,7 @@
     <p class="lede">Athe; kilonuzu, yediklerinizi, adımlarınızı ve dilerseniz adet döngünüzü takip eden bir sağlık uygulamasıdır. Bunlar mahrem bilgilerdir. Bu sayfa, hangi verinin toplandığını, nerede durduğunu ve onu istediğiniz an nasıl sildirebileceğinizi açıkça anlatır.</p>
 
     <div class="callout">
-      <p><b>Kısa özet:</b> Verileriniz yalnızca uygulamanın size hesap yapabilmesi için toplanır. Hiçbir veriniz satılmaz, reklam için kullanılmaz, reklam ağlarıyla paylaşılmaz. Konumunuz hiç alınmaz. Yemek fotoğraflarınız hiçbir yerde saklanmaz.</p>
+      <p><b>Kısa özet:</b> Verileriniz yalnızca uygulamanın size hesap yapabilmesi için toplanır. Hiçbir veriniz satılmaz, reklam için kullanılmaz, reklam ağlarıyla paylaşılmaz. Konumunuz yalnızca siz koşu takibini başlattığınızda, yalnızca telefonunuzun içinde mesafe hesaplamak için okunur; hiçbir sunucuya gönderilmez ve saklanmaz. Yemek fotoğraflarınız hiçbir yerde saklanmaz.</p>
       <p>Hesabınızı uygulamadan sildiğinizde bütün verileriniz sunucudan da silinir.</p>
     </div>
 
@@ -357,6 +357,7 @@
             <tr><td>Günlük yapay zekâ tarama sayısı</td><td>Ücretsiz kullanım kotasının takibi</td><td class="where">Firestore · usage</td></tr>
             <tr><td>Yemek fotoğrafı</td><td>Yapay zekâ ile besin değeri tahmini</td><td class="where">Saklanmıyor</td></tr>
             <tr><td>Çökme kayıtları ve temel kullanım olayları (ekran açılışı, özellik kullanımı)</td><td>Hata ayıklama ve uygulamanın iyileştirilmesi</td><td class="where">Crashlytics, Analytics</td></tr>
+            <tr><td>Konum (GPS)<span class="tag">İsteğe bağlı</span></td><td>Koşu takibini <b>siz başlattığınızda</b> koşunun mesafesini ölçmek. Konum bilgisi sunucuya gönderilmez, kaydedilmez; koşu bitince yalnızca toplam mesafe ve süre saklanır.</td><td class="where">Yalnızca telefonunuzda</td></tr>
             <tr><td>Uygulama tercihleri: dil, hatırlatıcı saatleri, günlük adım sayacı</td><td>Ayarlarınızın hatırlanması</td><td class="where">Yalnızca telefonunuzda</td></tr>
           </tbody>
         </table>
@@ -368,7 +369,8 @@
       <h2><span class="num">03</span><span>Toplanmayanlar</span></h2>
       <p>Aşağıdakiler hiçbir koşulda toplanmaz:</p>
       <ul class="never">
-        <li>Konum / GPS</li>
+        <li>Arka planda konum (uygulama kapalıyken konumunuz hiç okunmaz)</li>
+        <li>Konum geçmişi, rota veya harita kaydı (koşarken geçtiğiniz yol hiçbir yere yazılmaz)</li>
         <li>Rehber ve kişiler</li>
         <li>Fotoğraf galerisinin tamamı</li>
         <li>Mikrofon</li>
@@ -388,7 +390,19 @@
     </section>
 
     <section>
-      <h2><span class="num">05</span><span>Yemek fotoğrafı ve yapay zekâ</span></h2>
+      <h2><span class="num">05</span><span>Koşu takibi ve konum</span></h2>
+      <p>Uygulamada bir <b>koşu/yürüyüş takibi</b> ekranı vardır. Yalnızca siz "Koşuya başla" dediğinizde ve yalnızca takip sürdüğü sürece telefonunuzun GPS konumu okunur.</p>
+      <ul class="never" style="list-style:none">
+        <li>Konum verisi <b>sunucuya gönderilmez</b>, veri tabanına yazılmaz, bizim tarafımızdan görülmez.</li>
+        <li>Konum yalnızca cihazınızın içinde, iki nokta arasındaki mesafeyi hesaplamak için anlık olarak kullanılır.</li>
+        <li>Koşu bittiğinde kayda yalnızca <b>toplam mesafe, süre ve yakılan kalori</b> yazılır; rota, harita veya koordinat saklanmaz.</li>
+        <li>Takibi durdurduğunuzda konum okuması da durur. Uygulama arka plandayken veya kapalıyken konumunuz alınmaz.</li>
+        <li>Konum iznini vermezseniz uygulamanın geri kalanı normal çalışır; yalnızca canlı koşu takibi çalışmaz (mesafeyi elle de girebilirsiniz).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span><span>Yemek fotoğrafı ve yapay zekâ</span></h2>
       <p>Bir yemeğin fotoğrafını çektiğinizde, kare doğrudan Google'ın <b>Gemini</b> modeline analiz için gönderilir ve sonuç size tahmini kalori ve makro değerleri olarak döner.</p>
       <ul>
         <li>Fotoğraf hiçbir sunucuda ve hiçbir veri tabanında <b>saklanmaz</b>; analiz bittiğinde kaybolur.</li>
@@ -399,7 +413,7 @@
     </section>
 
     <section>
-      <h2><span class="num">06</span><span>Kimlerle paylaşıyoruz</span></h2>
+      <h2><span class="num">07</span><span>Kimlerle paylaşıyoruz</span></h2>
       <p>Verileriniz satılmaz ve pazarlama amacıyla kimseye aktarılmaz. Yalnızca uygulamanın çalışması için gereken altyapı sağlayıcısı kullanılır:</p>
       <ul>
         <li><b>Google LLC / Firebase</b> — kimlik doğrulama, veri tabanı, çökme raporları, kullanım ölçümü ve Gemini yapay zekâ hizmeti.</li>
@@ -409,13 +423,13 @@
     </section>
 
     <section>
-      <h2><span class="num">07</span><span>Ne kadar saklıyoruz</span></h2>
+      <h2><span class="num">08</span><span>Ne kadar saklıyoruz</span></h2>
       <p>Verileriniz hesabınız açık kaldığı sürece saklanır. Hesabınızı sildiğinizde profil, yemek, hareket, günlük özet, plan ve döngü kayıtlarınızın tamamı sunucudan silinir.</p>
       <p class="fine">Çökme ve kullanım istatistikleri kimliğinizle ilişkilendirilemeyecek biçimde toplanır ve Firebase'in kendi saklama süresi (en fazla 14 ay) sonunda otomatik olarak düşer.</p>
     </section>
 
     <section>
-      <h2><span class="num">08</span><span>Haklarınız</span></h2>
+      <h2><span class="num">09</span><span>Haklarınız</span></h2>
       <p>KVKK m.11 ve GDPR kapsamında şu haklara sahipsiniz:</p>
       <ul>
         <li>Verilerinizin işlenip işlenmediğini öğrenme ve bir kopyasını isteme</li>
@@ -429,7 +443,7 @@
     </section>
 
     <section>
-      <h2><span class="num">09</span><span>Verilerinizi nasıl silersiniz</span></h2>
+      <h2><span class="num">10</span><span>Verilerinizi nasıl silersiniz</span></h2>
       <p>Uygulamada <b>Profil › Hesabı sil</b> adımını izleyin. Güvenlik için şifrenizi yeniden girmeniz istenir. Onayladığınızda:</p>
       <ul>
         <li>Firestore'daki profiliniz, yemek, hareket, günlük özet, plan ve döngü kayıtlarınız silinir,</li>
@@ -437,17 +451,18 @@
         <li>Telefonunuzda tutulan tercihler ve adım verisi temizlenir.</li>
       </ul>
       <p>Bu işlem geri alınamaz. Uygulamaya erişemiyorsanız, hesabınızın e-posta adresinden bize yazarak da silme talebinde bulunabilirsiniz.</p>
+      <p><strong><a href="./hesap-silme.html">Adım adım hesap ve veri silme sayfası →</a></strong></p>
     </section>
 
     <section>
-      <h2><span class="num">10</span><span>Çocuklar</span></h2>
+      <h2><span class="num">11</span><span>Çocuklar</span></h2>
       <p>Athe 13 yaşından küçükler için tasarlanmamıştır ve onlardan bilerek veri toplamaz. 18 yaşından küçük kullanıcıların uygulamayı ebeveyn bilgisi ve onayıyla kullanması gerekir.</p>
       <p>18 yaş altı olarak kaydolan kullanıcılara <b>kalori açığı önerilmez</b>; uygulama bu yaş grubunda yalnızca koruyucu, büyümeyi destekleyen bir hedef gösterir.</p>
       <p class="fine">13 yaşından küçük bir çocuğa ait veri toplandığını fark edersek kaydı derhal sileriz.</p>
     </section>
 
     <section>
-      <h2><span class="num">11</span><span>Güvenlik</span></h2>
+      <h2><span class="num">12</span><span>Güvenlik</span></h2>
       <ul>
         <li>Tüm veri aktarımı TLS ile şifrelenir.</li>
         <li>Veri tabanı kuralları, her kullanıcının <b>yalnızca kendi</b> kayıtlarını okuyup yazabilmesine izin verir; başka bir kullanıcının verisine erişim sunucu tarafında engellidir.</li>
@@ -459,28 +474,29 @@
     </section>
 
     <section>
-      <h2><span class="num">12</span><span>İzinler</span></h2>
+      <h2><span class="num">13</span><span>İzinler</span></h2>
       <ul>
         <li><b>Fiziksel aktivite</b> — telefonun adım sayacını okumak için. Adım verisi telefonunuzda sayılır, sunucuya yalnızca günlük toplam olarak yazılır.</li>
         <li><b>Bildirimler</b> — su ve antrenman hatırlatıcıları için. Hatırlatıcı saatleri yalnızca telefonunuzda tutulur.</li>
         <li><b>Kamera / fotoğraf seçimi</b> — yemek fotoğrafı taraması için, yalnızca siz başlattığınızda.</li>
+        <li><b>Konum</b> — yalnızca canlı koşu takibi sürerken, mesafeyi ölçmek için. Arka planda konum istenmez; konum hiçbir yere gönderilmez.</li>
       </ul>
       <p>Bu izinlerin hepsi isteğe bağlıdır; reddederseniz uygulamanın geri kalanı normal çalışır.</p>
     </section>
 
     <section>
-      <h2><span class="num">13</span><span>Sağlık uyarısı</span></h2>
+      <h2><span class="num">14</span><span>Sağlık uyarısı</span></h2>
       <p>Athe bir tıbbi cihaz değildir. Sunduğu kalori hedefleri, antrenman programları, menüler ve döngü tahminleri genel bilgilendirme amaçlıdır; teşhis, tedavi veya tıbbi tavsiye yerine geçmez. Özellikle gebelik, kronik hastalık, yeme bozukluğu öyküsü veya ilaç kullanımı söz konusuysa bir hekime ya da diyetisyene danışın.</p>
     </section>
 
     <section>
-      <h2><span class="num">14</span><span>Bu metinde değişiklik</span></h2>
+      <h2><span class="num">15</span><span>Bu metinde değişiklik</span></h2>
       <p>Politika değişirse bu sayfa güncellenir ve yukarıdaki yürürlük tarihi ile sürüm numarası yenilenir. Kapsamlı bir değişiklikte uygulama içinde bilgilendirilir ve gerekirse rızanız yeniden alınır.</p>
     </section>
 
     <footer>
       <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
-      <span>Son güncelleme: 14 Eylül 2026</span>
+      <span>Son güncelleme: 16 Eylül 2026</span>
     </footer>
   </main>
 
@@ -490,7 +506,7 @@
     <p class="lede">Athe is a health app that tracks your weight, meals, steps and — if you choose to — your menstrual cycle. That is private information. This page sets out plainly what is collected, where it is kept, and how you can have it deleted at any time.</p>
 
     <div class="callout">
-      <p><b>In short:</b> Your data is collected only so the app can do its calculations for you. Nothing is sold, used for advertising, or shared with ad networks. Your location is never collected. Your meal photos are never stored anywhere.</p>
+      <p><b>In short:</b> Your data is collected only so the app can do its calculations for you. Nothing is sold, used for advertising, or shared with ad networks. Your location is read only while you are running a live run-tracking session, only on your phone, and is never sent anywhere. Your meal photos are never stored anywhere.</p>
       <p>When you delete your account in the app, all of your data is deleted from the server too.</p>
     </div>
 
@@ -523,6 +539,7 @@
             <tr><td>Daily AI scan count</td><td>Tracking the free usage quota</td><td class="where">Firestore · usage</td></tr>
             <tr><td>Meal photo</td><td>AI estimate of nutritional values</td><td class="where">Not stored</td></tr>
             <tr><td>Crash reports and basic usage events (screen opened, feature used)</td><td>Debugging and improving the app</td><td class="where">Crashlytics, Analytics</td></tr>
+            <tr><td>Location (GPS)<span class="tag">Optional</span></td><td>Measuring the distance of a run <b>you start yourself</b>. Location is never sent to a server or stored; when the run ends only the total distance and duration are saved.</td><td class="where">On your phone only</td></tr>
             <tr><td>App preferences: language, reminder times, today's step counter</td><td>Remembering your settings</td><td class="where">On your phone only</td></tr>
           </tbody>
         </table>
@@ -534,7 +551,8 @@
       <h2><span class="num">03</span><span>What we never collect</span></h2>
       <p>None of the following is collected under any circumstances:</p>
       <ul class="never">
-        <li>Location / GPS</li>
+        <li>Background location (your location is never read while the app is closed)</li>
+        <li>Location history, routes or maps (the path you run is never written down anywhere)</li>
         <li>Contacts</li>
         <li>Your photo library</li>
         <li>Microphone</li>
@@ -554,7 +572,19 @@
     </section>
 
     <section>
-      <h2><span class="num">05</span><span>Meal photos and AI</span></h2>
+      <h2><span class="num">05</span><span>Run tracking and location</span></h2>
+      <p>The app has a <b>run/walk tracking</b> screen. Your phone's GPS location is read only when you tap "Start run", and only for as long as the tracking session lasts.</p>
+      <ul class="never" style="list-style:none">
+        <li>Location data is <b>never sent to a server</b>, never written to a database, and never seen by us.</li>
+        <li>It is used only on your device, momentarily, to compute the distance between two points.</li>
+        <li>When the run ends, only the <b>total distance, duration and calories</b> are saved — no route, map or coordinates.</li>
+        <li>Stopping the tracking stops the location reading. Location is not collected while the app is in the background or closed.</li>
+        <li>If you decline the location permission the rest of the app works normally; only live run tracking is unavailable (you can still enter distance by hand).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span><span>Meal photos and AI</span></h2>
       <p>When you photograph a meal, the frame is sent directly to Google's <b>Gemini</b> model for analysis and comes back to you as estimated calories and macros.</p>
       <ul>
         <li>The photo is <b>not stored</b> on any server or in any database; it is gone once the analysis finishes.</li>
@@ -565,7 +595,7 @@
     </section>
 
     <section>
-      <h2><span class="num">06</span><span>Who we share with</span></h2>
+      <h2><span class="num">07</span><span>Who we share with</span></h2>
       <p>Your data is not sold and is never passed to anyone for marketing. Only the infrastructure provider the app needs to run is used:</p>
       <ul>
         <li><b>Google LLC / Firebase</b> — authentication, database, crash reporting, usage measurement, and the Gemini AI service.</li>
@@ -575,13 +605,13 @@
     </section>
 
     <section>
-      <h2><span class="num">07</span><span>How long we keep it</span></h2>
+      <h2><span class="num">08</span><span>How long we keep it</span></h2>
       <p>Your data is kept for as long as your account exists. When you delete your account, your profile, meal, activity, daily summary, plan and cycle records are all removed from the server.</p>
       <p class="fine">Crash and usage statistics are collected in a form that cannot be tied back to you and expire automatically at the end of Firebase's own retention window (14 months at most).</p>
     </section>
 
     <section>
-      <h2><span class="num">08</span><span>Your rights</span></h2>
+      <h2><span class="num">09</span><span>Your rights</span></h2>
       <p>Under KVKK Art. 11 and the GDPR you have the right to:</p>
       <ul>
         <li>Learn whether your data is processed and request a copy of it</li>
@@ -595,7 +625,7 @@
     </section>
 
     <section>
-      <h2><span class="num">09</span><span>How to delete your data</span></h2>
+      <h2><span class="num">10</span><span>How to delete your data</span></h2>
       <p>In the app, go to <b>Profile › Delete account</b>. You will be asked to re-enter your password for security. Once you confirm:</p>
       <ul>
         <li>your profile, meal, activity, daily summary, plan and cycle records in Firestore are deleted,</li>
@@ -606,14 +636,14 @@
     </section>
 
     <section>
-      <h2><span class="num">10</span><span>Children</span></h2>
+      <h2><span class="num">11</span><span>Children</span></h2>
       <p>Athe is not designed for children under 13 and does not knowingly collect data from them. Users under 18 should use the app with a parent's knowledge and consent.</p>
       <p>Users who register as under 18 are <b>never given a calorie deficit</b>; for that age group the app only shows a protective target that supports growth.</p>
       <p class="fine">If we learn that we hold data belonging to a child under 13, we delete the record immediately.</p>
     </section>
 
     <section>
-      <h2><span class="num">11</span><span>Security</span></h2>
+      <h2><span class="num">12</span><span>Security</span></h2>
       <ul>
         <li>All data in transit is encrypted with TLS.</li>
         <li>Database rules let each user read and write <b>only their own</b> records; access to another user's data is blocked server-side.</li>
@@ -625,28 +655,29 @@
     </section>
 
     <section>
-      <h2><span class="num">12</span><span>Permissions</span></h2>
+      <h2><span class="num">13</span><span>Permissions</span></h2>
       <ul>
         <li><b>Physical activity</b> — to read the phone's step counter. Steps are counted on your phone and only the daily total is written to the server.</li>
         <li><b>Notifications</b> — for water and workout reminders. Reminder times are stored on your phone only.</li>
         <li><b>Camera / photo selection</b> — for meal scanning, only when you start it.</li>
+        <li><b>Location</b> — only while a live run-tracking session is active, to measure distance. Background location is never requested; location never leaves your phone.</li>
       </ul>
       <p>All of these are optional; if you decline them, the rest of the app works normally.</p>
     </section>
 
     <section>
-      <h2><span class="num">13</span><span>Health disclaimer</span></h2>
+      <h2><span class="num">14</span><span>Health disclaimer</span></h2>
       <p>Athe is not a medical device. Its calorie targets, workout programs, meal plans and cycle predictions are for general information only and are not a substitute for diagnosis, treatment or medical advice. Consult a doctor or dietitian, particularly in case of pregnancy, chronic illness, a history of disordered eating, or ongoing medication.</p>
     </section>
 
     <section>
-      <h2><span class="num">14</span><span>Changes to this policy</span></h2>
+      <h2><span class="num">15</span><span>Changes to this policy</span></h2>
       <p>If the policy changes, this page is updated and the effective date and version number above are revised. For a substantial change you will be informed inside the app and, where necessary, asked for your consent again.</p>
     </section>
 
     <footer>
       <span>Athe · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a></span>
-      <span>Last updated: 14 September 2026</span>
+      <span>Last updated: 16 September 2026</span>
     </footer>
   </main>
 

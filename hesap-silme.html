@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Athe uygulamasında hesabınızı ve verilerinizi nasıl silersiniz — uygulama içinden ve e-posta ile. How to delete your Athe account and data.">
+<title>Athe — Hesap ve veri silme / Account &amp; data deletion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root {
+    --ground: #FAF6EE;
+    --surface: #FFFFFF;
+    --ink: #1E2420;
+    --muted: #6B7169;
+    --accent: #3F6B4E;
+    --accent-soft: #EAF0EA;
+    --rule: #E2D9C6;
+    --shadow: 0 1px 2px rgba(30,36,32,.05), 0 8px 24px -16px rgba(30,36,32,.25);
+    --display: "Archivo", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14170F; --surface: #1C2018; --ink: #EDE7DA; --muted: #9AA096;
+      --accent: #8FBE9B; --accent-soft: #232A22; --rule: #2E342B;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #14170F; --surface: #1C2018; --ink: #EDE7DA; --muted: #9AA096;
+    --accent: #8FBE9B; --accent-soft: #232A22; --rule: #2E342B;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--body); font-size: 17px; line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 16px 72px; }
+  .eyebrow {
+    font-family: var(--display); font-weight: 600; font-size: 12.5px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: var(--display); font-weight: 800; font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.12; margin: 10px 0 8px;
+  }
+  h2 {
+    font-family: var(--display); font-weight: 700; font-size: 21px;
+    margin: 36px 0 10px; padding-top: 22px; border-top: 1px solid var(--rule);
+  }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 22px 0 6px; }
+  p, li { margin: 0 0 12px; }
+  ul, ol { padding-left: 22px; }
+  a { color: var(--accent); }
+  .lede { color: var(--muted); font-size: 18px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 18px 20px; box-shadow: var(--shadow); margin: 18px 0;
+  }
+  .card.accent { background: var(--accent-soft); }
+  .fine { color: var(--muted); font-size: 14.5px; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li {
+    counter-increment: s; position: relative; padding-left: 40px; margin-bottom: 14px;
+  }
+  .steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: var(--ground);
+    font-family: var(--display); font-weight: 700; font-size: 14px;
+    display: grid; place-items: center;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: var(--display); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .tablewrap { overflow-x: auto; }
+  footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14.5px; }
+  .lang { font-family: var(--display); font-size: 13px; color: var(--muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Athe · Hesap ve veri silme</span>
+  <h1>Hesabınızı ve verilerinizi silme</h1>
+  <p class="lede">
+    <strong>Uygulama:</strong> Athe (Google Play paket adı <code>com.formda.formda</code>).<br>
+    <strong>Geliştirici:</strong> Umut Can Köse.
+  </p>
+  <p class="lang">Türkçe · <a href="#en">English below</a></p>
+
+  <div class="card accent">
+    <p style="margin:0"><strong>Kısa yol:</strong> Uygulamada <strong>Profil → Hesabımı ve verilerimi sil</strong>.
+    Şifrenizi girdikten sonra hesabınız ve sunucudaki tüm verileriniz kalıcı olarak silinir.
+    Uygulamayı açamıyorsanız aşağıdaki e-posta yolunu kullanın.</p>
+  </div>
+
+  <h2>1. Uygulama içinden silme</h2>
+  <ol class="steps">
+    <li>Athe uygulamasını açın ve hesabınıza giriş yapın.</li>
+    <li>Alt menüden <strong>Profil</strong> sekmesine gidin.</li>
+    <li>Sayfanın altındaki <strong>Hesabımı ve verilerimi sil</strong> seçeneğine dokunun.</li>
+    <li>Güvenlik için şifrenizi girin ve onaylayın.</li>
+  </ol>
+  <p class="fine">Silme işlemi anında başlar ve birkaç saniye içinde tamamlanır. Onaydan sonra geri alınamaz.</p>
+
+  <h2>2. E-posta ile silme talebi</h2>
+  <p>Telefonunuz elinizde değilse veya uygulamaya giriş yapamıyorsanız:</p>
+  <div class="card">
+    <p style="margin:0">
+      <strong>E-posta:</strong>
+      <a href="mailto:umutcankose38@gmail.com?subject=Athe%20hesap%20silme%20talebi">umutcankose38@gmail.com</a><br>
+      <strong>Konu:</strong> Athe hesap silme talebi<br>
+      <strong>İçerik:</strong> Hesabınızı açarken kullandığınız e-posta adresi.
+    </p>
+  </div>
+  <p class="fine">
+    Talep, kimliğinizi doğrulayabilmek için <strong>hesabın kayıtlı olduğu e-posta adresinden</strong>
+    gönderilmelidir. Talepler en geç <strong>30 gün</strong> içinde sonuçlandırılır; uygulamada
+    genellikle aynı gün içinde tamamlanır.
+  </p>
+
+  <h2>3. Ne siliniyor</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Veri</th><th>Ne oluyor</th></tr></thead>
+      <tbody>
+        <tr><td>Hesap (e-posta, giriş bilgisi)</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Profil: ad, yaş, cinsiyet, boy, kilo, hedefler</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Günlük kayıtlar: yediklerin, adım, kalori, su</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Antrenman ve koşu/yürüyüş kayıtları</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Adet döngüsü kayıtları, belirtiler, notlar</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Beslenme ve antrenman planları</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Kişisel yemek hafızası (yazdığınız yemekler)</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Yapay zekâ tarama sayaçları</td><td>Kalıcı olarak silinir</td></tr>
+        <tr><td>Telefonunuzda tutulan yerel ayarlar</td><td>Çıkış yapıldığında cihazdan temizlenir</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Saklanmayan veriler</h3>
+  <p>
+    Yemek fotoğraflarınız hiçbir zaman sunucularımızda saklanmaz; yalnızca analiz
+    anında işlenir ve atılır. Koşu takibindeki konum bilginiz sunucuya hiç gönderilmez,
+    yalnızca telefonunuzun içinde mesafe hesaplamak için kullanılır.
+  </p>
+
+  <h3>Silmeden sonra kısa süre kalabilenler</h3>
+  <p class="fine">
+    Çökme ve hata kayıtları (Firebase Crashlytics) ile temel kullanım istatistikleri
+    (Firebase Analytics) kimliğinizle ilişkilendirilmeden tutulur ve Google'ın saklama
+    süreleri dolduğunda otomatik silinir. Yedekleme sistemlerindeki kopyalar en geç
+    <strong>90 gün</strong> içinde döngüyle birlikte kaybolur. Bu süre içinde bu veriler
+    hiçbir amaçla kullanılmaz.
+  </p>
+
+  <h2>4. Verilerinizi silmeden önce indirme</h2>
+  <p>
+    Silmeden önce kayıtlarınızın bir kopyasını alabilirsiniz:
+    <strong>Profil → Verilerimi indir</strong>. Tüm kayıtlarınız tek bir JSON dosyası
+    olarak dışa aktarılır.
+  </p>
+
+  <p class="fine" style="margin-top:28px">
+    Gizlilik politikasının tamamı: <a href="./">Athe Gizlilik Politikası</a>
+  </p>
+
+  <!-- ============================ ENGLISH ============================ -->
+
+  <h2 id="en">English — Account &amp; data deletion</h2>
+  <p class="lede">
+    <strong>App:</strong> Athe (Google Play package <code>com.formda.formda</code>).<br>
+    <strong>Developer:</strong> Umut Can Köse.
+  </p>
+
+  <div class="card accent">
+    <p style="margin:0"><strong>Short version:</strong> in the app, go to
+    <strong>Profile → Delete my account and data</strong>. After you enter your password,
+    your account and all of your data on the server are permanently deleted.
+    If you cannot open the app, use the email route below.</p>
+  </div>
+
+  <h3>1. Delete from inside the app</h3>
+  <ol class="steps">
+    <li>Open Athe and sign in to your account.</li>
+    <li>Go to the <strong>Profile</strong> tab in the bottom navigation.</li>
+    <li>Tap <strong>Delete my account and data</strong> at the bottom of the page.</li>
+    <li>Enter your password to confirm.</li>
+  </ol>
+  <p class="fine">Deletion starts immediately and finishes within seconds. It cannot be undone.</p>
+
+  <h3>2. Request deletion by email</h3>
+  <div class="card">
+    <p style="margin:0">
+      <strong>Email:</strong>
+      <a href="mailto:umutcankose38@gmail.com?subject=Athe%20account%20deletion%20request">umutcankose38@gmail.com</a><br>
+      <strong>Subject:</strong> Athe account deletion request<br>
+      <strong>Body:</strong> the email address your account is registered with.
+    </p>
+  </div>
+  <p class="fine">
+    So that we can verify your identity, the request must be sent
+    <strong>from the email address the account is registered with</strong>. Requests are
+    completed within <strong>30 days</strong> at the latest, and usually the same day.
+  </p>
+
+  <h3>3. What is deleted</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Data</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Account (email, sign-in credentials)</td><td>Permanently deleted</td></tr>
+        <tr><td>Profile: name, age, sex, height, weight, goals</td><td>Permanently deleted</td></tr>
+        <tr><td>Daily logs: meals, steps, calories, water</td><td>Permanently deleted</td></tr>
+        <tr><td>Workout, run and walk records</td><td>Permanently deleted</td></tr>
+        <tr><td>Menstrual cycle logs, symptoms, notes</td><td>Permanently deleted</td></tr>
+        <tr><td>Meal and workout plans</td><td>Permanently deleted</td></tr>
+        <tr><td>Personal food memory (foods you typed)</td><td>Permanently deleted</td></tr>
+        <tr><td>AI scan counters</td><td>Permanently deleted</td></tr>
+        <tr><td>Local settings stored on your phone</td><td>Cleared from the device on sign-out</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Never stored</h3>
+  <p>
+    Your meal photos are never stored on our servers; they are processed for the
+    analysis and discarded. Your location during run tracking is never sent to any
+    server — it is used only on your phone to measure distance.
+  </p>
+
+  <h3>Retained briefly after deletion</h3>
+  <p class="fine">
+    Crash and error reports (Firebase Crashlytics) and basic usage statistics
+    (Firebase Analytics) are kept without being linked to your identity and are removed
+    automatically when Google's retention periods expire. Copies in backup systems are
+    rotated out within <strong>90 days</strong> at the latest. They are not used for any
+    purpose during that time.
+  </p>
+
+  <h3>4. Download your data before deleting</h3>
+  <p>
+    You can export a copy of your records first: <strong>Profile → Download my data</strong>.
+    Everything is exported as a single JSON file.
+  </p>
+
+  <p class="fine" style="margin-top:28px">
+    Full privacy policy: <a href="./">Athe Privacy Policy</a>
+  </p>
+
+  <footer>
+    Athe · Umut Can Köse · <a href="mailto:umutcankose38@gmail.com">umutcankose38@gmail.com</a><br>
+    Son güncelleme / Last updated: 19.09.2026
+  </footer>
+
+</div>
+</body>
+</html>
